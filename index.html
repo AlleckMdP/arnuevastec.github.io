@@ -21,13 +21,13 @@
 
     <a-scene embedded arjs>
       <a-marker preset="hiro">
-        <a-box
-          id="blueBox"
-          obj-model="obj: model/dragon.glb"
+        <a-entity
+          id="dragon"
+          gltf-model="model\dragon.glb"
+          scale="0.05 0.05 0.05"
           position="0 0 0"
-          material="color: blue;"
-          rotation="0 0 0"
-        ></a-box>
+          rotation="270 0 0"
+        ></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
@@ -35,7 +35,7 @@
     <script>
       var isRotating = false;
       var rotationSpeed = 0.02;
-      var toto = document.getElementById("blueBox");
+      var dra = document.getElementById("dragon");
 
       function toggleRotation() {
         if (isRotating) {
@@ -51,18 +51,6 @@
           box.object3D.rotation.y += rotationSpeed;
           requestAnimationFrame(rotateBox);
         }
-      }
-
-      function scaleBox() {
-          box.object3D.scale.x += rotationSpeed;
-          box.object3D.scale.y += rotationSpeed;
-          box.object3D.scale.z += rotationSpeed;
-          if(box.object3D.scale.x > 2){
-            box.object3D.scale.x = 1;
-            box.object3D.scale.y = 1;
-            box.object3D.scale.z = 1;
-          }
-          requestAnimationFrame(scaleBox);
       }
     </script>
   </body>
