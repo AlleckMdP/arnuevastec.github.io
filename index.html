@@ -2,27 +2,8 @@
 <html>
   <head>
     <title>Alleck Mojardin AR</title>
-
-
-
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-  
-    <style>
-      #rotate-button {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        z-index: 1;
-        background-color: blue;
-        color: black;
-        border: none;
-        padding: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        text-align: center;
-      }
-    </style>
   </head>
 
   <body style="margin: 0px; overflow: hidden;">
@@ -38,39 +19,5 @@
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
-    
-    <button id="rotate-button">Rotar</button>
-
-    <script>
-      const rotateButton = document.getElementById("rotate-button");
-      const modelEntity = document.querySelector("a-marker a-entity");
-
-      let isRotating = false;
-      let rotationSpeed = 0.5;
-
-      function rotateModel() {
-        if (!isRotating) {
-          isRotating = true;
-          rotateButton.innerHTML = "Detener rotación";
-          rotateButton.style.backgroundColor = "red";
-          rotateButton.style.color = "white";
-          modelEntity.setAttribute("animation", {
-            property: "rotation",
-            to: "0 360 0",
-            dur: rotationSpeed * 1000,
-            easing: "linear",
-            loop: true
-          });
-        } else {
-          isRotating = false;
-          rotateButton.innerHTML = "Rotar";
-          rotateButton.style.backgroundColor = "white";
-          rotateButton.style.color = "black";
-          modelEntity.removeAttribute("animation");
-        }
-      }
-
-      rotateButton.addEventListener("click", rotateModel);
-    </script>
   </body>
 </html>
