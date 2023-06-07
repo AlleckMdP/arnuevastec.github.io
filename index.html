@@ -12,9 +12,34 @@
         background-color: blue;
         color: white;
         cursor: pointer;
+        position: fixed;
+        top: 10px;
+        left: 10%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 1;
       }
 
       .button:hover {
+        background-color: gray;
+      }
+
+      .button2 {
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        background-color: blue;
+        color: white;
+        cursor: pointer;
+        position: fixed;
+        top: 10px;
+        left: 30%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 1;
+      }
+
+      .button2:hover {
         background-color: gray;
       }
     </style>
@@ -22,27 +47,49 @@
 
   <script>
     function playSound() {
-      var audio = new Audio('sound\movement.mp3');
+      var audio = new Audio('sound/movement.mp3');
       audio.play();
     }
   </script>
-  
+
   <button class="button" onclick="playSound()">Sound</button>
+  <button id="toggleButton" class="button2">Texture</button>
   
   <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs>
-      <a-marker preset="hiro">
+      <a-marker preset="custom" type="pattern" url="dangerdgm.ptt">
         <a-entity
+          id="pipe1"
           gltf-model="model\pipe.glb"
           scale="0.1 0.1 0.1"
           position="0 0 0"
           rotation="270 0 0"
-          animation-mixer="clip: idle; loop: repeat"
-          shadow="receive: false"        
+          visible="true"        
+          >
+        </a-entity>
+        <a-entity
+          id="pipe2"
+          gltf-model="model\pipe.glb"
+          scale="0.1 0.1 0.1"
+          position="0 0 0"
+          rotation="270 0 0"
+          visible="false"       
           >
         </a-entity>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+        const toggleButton =  document.getElementById("toggleButton");
+        const pipe1 = document.getElementById("pipe1");
+        const pipe2 = document.getElementById("pipe2");
+    
+        toggleButton.addEventListener("click", function() {
+            pipe1.setAttribute("visible", !pipe1.setAttribute("visible"));
+            pipe2.setAttribute("visible", !pipe2.setAttribute("visible"));
+        });
+    </script>
+
   </body>
 </html>
