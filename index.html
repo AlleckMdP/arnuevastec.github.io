@@ -46,7 +46,7 @@
         background-color: blue;
         color: white;
         position: fixed;
-        top: 200px;
+        top: 60px;
         left: 15%;
         transform: translateX(-50%);
         text-align: center;
@@ -69,23 +69,11 @@
       var audio = new Audio('sound/paint.mp3');
       audio.play();
     }
-
-    function playAnimation() {
-    var entity1 = document.querySelector('pipe1');
-    var entity2 = document.querySelector('pipe2');
-    var mixer1 = entity1.components['animation-mixer'];
-    var mixer2 = entity2.components['animation-mixer'];
-    mixer1.stopAllAction();
-    mixer2.stopAllAction();
-
-    mixer1.playAction('PWrench_Anim_Intro').reset().play();
-    mixer2.playAction('PWrench_Anim_Intro').reset().play();
-  }
   </script>
 
   <button class="button" onclick="playSound()">Sound</button>
   <button id="toggleButton" class="button2" onclick="playSound2()">Texture</button>
-  <button class="button3" onclick="playAnimation()">Animation</button>
+  
   
   <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs>
@@ -97,7 +85,8 @@
           scale="0.1 0.1 0.1"
           position="0 0 0"
           rotation="270 0 0"
-          visible="true"        
+          visible="true"
+          animation-mixer        
           >
         </a-entity>
         <a-entity
@@ -107,11 +96,13 @@
           scale="0.1 0.1 0.1"
           position="0 0 0"
           rotation="270 0 0"
-          visible="false"       
+          visible="false"
+          animation-mixer       
           >
         </a-entity>
       </a-marker>
       <a-entity camera></a-entity>
+      <button id="animationButton" class="button3" onclick="playAnimation()">Animation</button>
     </a-scene>
 
     <script>
@@ -130,6 +121,18 @@
             pipe2.setAttribute("visible", "false");
             isPipe1Visible = true;
           }
+        });
+
+        const animationButton = document.getElementById("animationButton");
+        
+        animationButton.addEventListener("click", function () {
+          pipe1.components["animation-mixer"].pause();
+          pipe1.setAttribute("animation-mixer", "time", 0);
+          pipe1.components["animation-mixer"].play();
+
+          pipe2.components["animation-mixer"].pause();
+          pipe2.setAttribute("animation-mixer", "time", 0);
+          pipe2.components["animation-mixer"].play();
         });
       </script>
 
