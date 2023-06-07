@@ -15,7 +15,7 @@
         cursor: pointer;
         position: fixed;
         top: 10px;
-        left: 10%;
+        left: 15%;
         transform: translateX(-50%);
         text-align: center;
         z-index: 1;
@@ -34,7 +34,7 @@
         cursor: pointer;
         position: fixed;
         top: 10px;
-        left: 40%;
+        left: 45%;
         transform: translateX(-50%);
         text-align: center;
         z-index: 1;
@@ -51,10 +51,15 @@
       var audio = new Audio('sound/movement.mp3');
       audio.play();
     }
+
+    function playSound2() {
+      var audio = new Audio('sound/paint.mp3');
+      audio.play();
+    }
   </script>
 
   <button class="button" onclick="playSound()">Sound</button>
-  <button id="toggleButton" class="button2">Texture</button>
+  <button id="toggleButton" class="button2" onclick="playSound2()">Texture</button>
   
   <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs>
