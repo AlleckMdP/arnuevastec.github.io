@@ -22,7 +22,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: #fff;
+      background-color: #2a2a2a70;
       padding: 20px;
       }
 
@@ -84,13 +84,25 @@
         color: white;
         position: fixed;
         top: 10px;
-        right: 10px;
+        right: 15%;
         transform: translateX(-50%);
         text-align: center;
         z-index: 1;
       }
 
       .button4:hover {
+        background-color: gray;
+      }
+
+      .button5 {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: blue;
+        color: white;
+        text-align: center;
+      }
+
+      .button5:hover {
         background-color: gray;
       }
     </style>
@@ -121,11 +133,12 @@
   <body style="margin: 0px; overflow: hidden;">
     <div id="overlay" class="overlay">
       <div class="text-box">
-        <p>A pipe wrench is any of several types of wrench that are designed to turn threaded pipe and pipe fittings for assembly 
+        <p style="color: white">A pipe wrench is any of several types of wrench that are designed to turn threaded pipe and pipe fittings for assembly 
             (tightening) or disassembly (loosening). The Stillson wrench, or Stillson-pattern wrench, is the usual form of pipe wrench, 
             especially in North America. The Stillson name is that of the original patent holder, who licensed the design to a number of 
             manufacturers. The patent expired decades ago. Another type of wrench often used on pipes, the plumber wrench, is also called 
             a pipe wrench in some places.</p>
+        <button class="button5" onclick="toggleOverlay()">Close</button>
       </div>
     </div>
     <a-scene embedded arjs>
