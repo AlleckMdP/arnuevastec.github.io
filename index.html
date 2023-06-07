@@ -102,7 +102,7 @@
         </a-entity>
       </a-marker>
       <a-entity camera></a-entity>
-      <button id="animationButton" class="button3" onclick="replayAnimation()">Animation</button>
+      <button id="animationButton" class="button3">Animation</button>
     </a-scene>
 
     <script>
@@ -126,10 +126,10 @@
         function replayAnimation()
         {
           pipe1.removeAttribute("animation-mixer");
-          pipe1.setAttribute("animation-mixer", {});
+          pipe1.setAttribute("animation-mixer", "loop: once");
 
           pipe2.removeAttribute("animation-mixer");
-          pipe2.setAttribute("animation-mixer", {});
+          pipe2.setAttribute("animation-mixer", "loop: once");
         }
       </script>
 
