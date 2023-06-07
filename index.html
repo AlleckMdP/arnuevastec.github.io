@@ -6,6 +6,26 @@
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
     <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <style>
+      .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 9999;
+      }
+
+      .text-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      }
+
       .button {
         padding: 10px 20px;
         font-size: 18px;
@@ -56,6 +76,23 @@
       .button3:hover {
         background-color: gray;
       }
+
+      .button4 {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: blue;
+        color: white;
+        position: fixed;
+        top: 10px;
+        right: 15%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 1;
+      }
+
+      .button4:hover {
+        background-color: gray;
+      }
     </style>
   </head>
 
@@ -69,13 +106,28 @@
       var audio = new Audio('sound/paint.mp3');
       audio.play();
     }
+
+    function toggleOverlay() {
+      var overlay = document.getElementById("overlay");
+      overlay.style.display = overlay.style.display === "none" ? "block" : "none";
+    }
   </script>
 
   <button class="button" onclick="playSound()">Sound</button>
   <button id="toggleButton" class="button2" onclick="playSound2()">Texture</button>
+  <button class="button4" onclick="toggleOverlay()">TextBox</button>
   
   
   <body style="margin: 0px; overflow: hidden;">
+    <div id="overlay" class="overlay">
+      <div class="text-box">
+        <p>A pipe wrench is any of several types of wrench that are designed to turn threaded pipe and pipe fittings for assembly 
+            (tightening) or disassembly (loosening). The Stillson wrench, or Stillson-pattern wrench, is the usual form of pipe wrench, 
+            especially in North America. The Stillson name is that of the original patent holder, who licensed the design to a number of 
+            manufacturers. The patent expired decades ago. Another type of wrench often used on pipes, the plumber wrench, is also called 
+            a pipe wrench in some places.</p>
+      </div>
+    </div>
     <a-scene embedded arjs>
       <a-marker preset="hiro">
         <a-entity
@@ -132,6 +184,5 @@
           pipe2.setAttribute("animation-mixer", "loop: once");
         }
       </script>
-
   </body>
 </html>
