@@ -7,104 +7,106 @@
     <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <style>
       .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: none;
-      z-index: 9999;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        z-index: 9999;
       }
 
       .text-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #2a2a2a70;
-      padding: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #2a2a2a70;
+        padding: 30px;
+        width: 80%;
+        height: 50%;
+        max-width: 1400px;
+        max-height: 1400px;
       }
 
       .button {
         padding: 10px 20px;
         font-size: 18px;
-        background-color: blue;
+        border: none;
+        background-color: #3075e4;
         color: white;
-        position: fixed;
-        top: 10px;
-        left: 15%;
-        transform: translateX(-50%);
-        text-align: center;
-        z-index: 1;
+        cursor: pointer;
       }
 
       .button:hover {
         background-color: gray;
       }
 
-      .button2 {
+      .buttonA {
         padding: 10px 20px;
         font-size: 18px;
-        background-color: blue;
-        color: white;
-        position: fixed;
-        top: 10px;
-        left: 45%;
-        transform: translateX(-50%);
-        text-align: center;
-        z-index: 1;
-      }
-
-      .button2:hover {
-        background-color: gray;
-      }
-
-      .button3 {
-        padding: 10px 20px;
-        font-size: 18px;
-        background-color: blue;
-        color: white;
-        position: fixed;
-        top: 80px;
-        left: 20%;
-        transform: translateX(-50%);
-        text-align: center;
-        z-index: 1;
-      }
-
-      .button3:hover {
-        background-color: gray;
-      }
-
-      .button4 {
-        padding: 10px 20px;
-        font-size: 18px;
-        background-color: blue;
-        color: white;
-        position: fixed;
-        top: 10px;
-        left: 300px;
-        transform: translateX(-50%);
-        text-align: center;
-        z-index: 1;
-      }
-
-      .button4:hover {
-        background-color: gray;
-      }
-
-      .button5 {
-        padding: 10px 20px;
-        font-size: 18px;
-        background-color: blue;
+        background-color: #3075e4;
         color: white;
         left: 50%;
         text-align: center;
       }
 
-      .button5:hover {
+      .buttonA:hover {
         background-color: gray;
+      }
+
+      .img{
+        width: 120px;
+        height: 120px;
+      }
+      
+      @media (max-height: 600px) {
+        p {
+          font-size: 15px;
+        }
+      }
+
+      @media (min-height: 601px) and (max-height: 1200px) {
+        p {
+          font-size: 25px;
+        }
+      }
+
+      @media (min-height: 1201px) and (max-height: 1800px) {
+        p {
+          font-size: 70px;
+        }
+      }
+
+      @media (min-height: 1801px) {
+        p {
+          font-size: 60px;
+        }
+      }
+
+      @media (min-height: 600px) {
+        .buttonA {
+          font-size: 15px;
+        }
+      }
+
+      @media (min-height: 601px) and (max-height: 1200px) {
+        .buttonA {
+          font-size: 20px;
+        }
+      }
+
+      @media (min-height: 1201px) and (max-height: 1800px) {
+        .buttonA {
+          font-size: 45px;
+        }
+      }
+
+      @media (min-height: 1801px) {
+        .buttonA {
+          font-size: 85px;
+        }
       }
     </style>
   </head>
@@ -124,22 +126,31 @@
       var overlay = document.getElementById("overlay");
       overlay.style.display = overlay.style.display === "block" ? "none" : "block";
     }
-  </script>
 
-  <button class="button" onclick="playSound()">Sound</button>
-  <button id="toggleButton" class="button2" onclick="playSound2()">Texture</button>
-  <button class="button4" onclick="toggleOverlay()">TextBox</button>
+    
+  </script>
+  
   
   
   <body style="margin: 0px; overflow: hidden;">
+    <div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 1;">
+        <button class="button" onclick="playSound()" style="margin-top: 30px; margin-left: 5px; margin-right: 5px;"><img src="sound.png" class="img"/></button>
+        <button id="toggleButton" class="button" onclick="playSound2()" style="margin-top: 30px; margin-left: 5px; margin-right: 5px;"><img src="tex.png" class="img"/></button>
+        <button id="animationButton" class="button" onclick="replayAnimation()" style="margin-top: 30px; margin-left: 5px; margin-right: 5px;"><img src="play.png" class="img"/></button>
+        <button class="button" onclick="toggleOverlay()" style="margin-top: 30px; margin-left: 5px; margin-right: 5px;"><img src="info.png" class="img"/></button>
+    </div>
+    
+
     <div id="overlay" class="overlay">
       <div class="text-box">
-        <p style="color: white">A pipe wrench is any of several types of wrench that are designed to turn threaded pipe and pipe fittings for assembly 
-            (tightening) or disassembly (loosening). The Stillson wrench, or Stillson-pattern wrench, is the usual form of pipe wrench, 
-            especially in North America. The Stillson name is that of the original patent holder, who licensed the design to a number of 
-            manufacturers. The patent expired decades ago. Another type of wrench often used on pipes, the plumber wrench, is also called 
-            a pipe wrench in some places.</p>
-        <button class="button5" onclick="toggleOverlay()">Close</button>
+        <p style="color: white; max-width: 1300px; max-height: 1300px;">
+          A pipe wrench is any of several types of wrench that are designed to turn threaded pipe and pipe fittings for assembly 
+          (tightening) or disassembly (loosening). The Stillson wrench, or Stillson-pattern wrench, is the usual form of pipe wrench, 
+          especially in North America. The Stillson name is that of the original patent holder, who licensed the design to a number of 
+          manufacturers. The patent expired decades ago. Another type of wrench often used on pipes, the plumber wrench, is also called 
+          a pipe wrench in some places.
+        </p>
+        <button class="buttonA" onclick="toggleOverlay()" style="max-width: 1300px; max-height: 1300px; margin-top: 5px;">Close</button>
       </div>
     </div>
     <a-scene embedded arjs>
@@ -168,7 +179,6 @@
         </a-entity>
       </a-marker>
       <a-entity camera></a-entity>
-      <button id="animationButton" class="button3" onclick="replayAnimation()">Animation</button>
     </a-scene>
 
     <script>
@@ -197,6 +207,8 @@
           pipe2.removeAttribute("animation-mixer");
           pipe2.setAttribute("animation-mixer", "loop: once");
         }
+
+        
       </script>
   </body>
 </html>
